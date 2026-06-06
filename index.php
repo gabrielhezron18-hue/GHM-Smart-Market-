@@ -6,7 +6,7 @@ require_once 'auth.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GHM Smart Market | Karibu</title>
+  <title>Smart Market | Karibu</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,13 +14,13 @@ require_once 'auth.php';
     <section class="welcome-page" aria-label="Welcome page">
       <header class="top-bar">
         <a class="logo" href="index.php">
-          <span>GHM</span>
+          <span>SM</span>
           Smart Market
         </a>
       </header>
 
       <div class="welcome-content">
-        <p class="eyebrow">Karibu GHM Smart Market</p>
+        <p class="eyebrow">Karibu Smart Market</p>
         <h1>Karibu kwenye website yetu ya biashara.</h1>
         <p>
           Tunauza bidhaa bora kwa matumizi ya kila siku na shughuli za kitaalamu.

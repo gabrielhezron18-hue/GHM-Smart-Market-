@@ -1,20 +1,45 @@
 <?php
 session_start();
-
 $validUsers = [
-    'Gabrielhezron' => '123456',
-    'mteja' => '123456',
+    'admin' => [ 
+        'password' => '123456',
+        'role' => 'admin'],
+
+    'mteja' =>[
+        'password' => '123456',
+        'role' => 'user']
+    
 ];
 
 function isLoggedIn(): bool
 {
-    return isset($_SESSION['user']);
+    return isset($_SESSION['user_id']);
 }
 
 function requireLogin(): void
 {
     if (!isLoggedIn()) {
         header('Location: login.php');
+        exit;
+    }
+}
+
+function currentUserRole(): string
+{
+    return $_SESSION['role'] ?? 'customer';
+}
+
+function isAdmin(): bool
+{
+    return isLoggedIn() && currentUserRole() === 'admin';
+}
+
+function requireAdmin(): void
+{
+    requireLogin();
+
+    if (!isAdmin()) {
+        header('Location: products.php');
         exit;
     }
 }

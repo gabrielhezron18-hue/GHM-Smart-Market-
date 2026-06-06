@@ -1,6 +1,10 @@
 <?php
 require_once 'auth.php';
-
+require_once 'db.php';
+if(isAdmin()) {
+  header('Location: orders.php');
+  exit;
+}
 if (isLoggedIn()) {
     header('Location: products.php');
     exit;
@@ -15,11 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($username === '' || $password === '') {
         $error = 'Tafadhali jaza username na password.';
-    } elseif (isset($validUsers[$username]) && $validUsers[$username] === $password) {
-        $_SESSION['user'] = $username;
+        } elseif (isset($validUsers[$username]) && $validUsers[$username]['password']=== $password) {
+        $_SESSION['user_id'] = $username;
+         $_SESSION['role'] = $validUsers[$username]['role'];
         header('Location: products.php');
         exit;
     } else {
+        $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username OR email = :email LIMIT 1');
+        $statement->execute([
+            ':username' => $username,
+            ':email' => $username,
+        ]);
+        $user = $statement->fetch();
+
+        if ($user && password_verify($password, $user['password_hash'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+            header('Location: products.php');
+            exit;
+        }
+
         $error = 'Username au password si sahihi. Jaribu admin / 123456.';
     }
 }
@@ -87,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <button class="primary-button" type="submit">Login</button>
           <a class="text-button link-button" href="index.php">Rudi welcome page</a>
-          <p class="hint">Demo login: username <strong>admin</strong>, password <strong>123456</strong>.</p>
+          <p class="hint">Admin: <strong>admin</strong> / <strong>123456</strong>. Mteja: <strong>mteja</strong> / <strong>123456</strong>.</p>
         </form>
       </div>
     </section>
