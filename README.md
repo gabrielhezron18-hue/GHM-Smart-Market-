@@ -17,7 +17,23 @@ It acts as the link between seller and the buyers of the goods.
 - HTML for structuring the pages
 - CSS for designs
 - MySQL for data storage
-- laptop and softwares like visual studio code and xampp which has mysql and host the web pages.
+- laptop and softwares like visual studio code,github and xampp which has mysql and host the web pages.
+- # Project structure
+- Index.phph
+- Author.php
+- Registration.php
+- Registration_process.php
+- login.php
+- logout.php
+- Admin.php
+- database.sql
+- db.php
+- db.production.example.php
+- orders.php
+- products.php
+- scripts.js
+- styles.css
+- track.php
 
 # How to run
 1. Install XAMPP
@@ -25,6 +41,11 @@ It acts as the link between seller and the buyers of the goods.
 3. Start Apache and MySQL
 4. Open in browser
    NB: make sure you write the correct path.
-
+# Future project development improvement
+system security 
+Registration system improvement
+Notifications and contact improvements
+# Contacts
+email: gabrielhezron18@gmail.com
 # Author
 Gabriel Hezron Mwakitega, a second year student at mzumbe university
