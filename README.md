@@ -17,6 +17,7 @@ It acts as the link between seller and the buyers of the goods.
 - HTML for structuring the pages
 - CSS for designs
 - MySQL for data storage
+- laptop and softwares like visual studio code and xampp which has mysql and host the web pages.
 
 # How to run
 1. Install XAMPP
